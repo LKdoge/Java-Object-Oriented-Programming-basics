@@ -12,10 +12,16 @@ public class Profesor extends persona {
     private ArrayList<Estudiante> ListaEstudiantes = new ArrayList<Estudiante>();
     private ArrayList<Materias> ListaMaterias = new ArrayList<Materias>();
      Estudiante pos = new Estudiante();
+     
+    public Profesor(){
+        
+    } 
+     
     public Profesor(int numeromaterias,int Cedula, String Nombre) {
         super(Cedula, Nombre);
         this.numeromaterias = numeromaterias;
     }
+
 
     public int getnumeromaterias() {
         return numeromaterias;

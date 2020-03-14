@@ -6,6 +6,7 @@
 package taller2;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,15 +14,21 @@ import java.util.ArrayList;
  */
 public class Interfaz extends javax.swing.JFrame {
 
+    int aux = 0;
+    int Aux = 0;
+    Profesor P = new Profesor();
+    ArrayList<Profesor> ListaProfesores = new ArrayList<Profesor>();
+
     /**
      * Creates new form Interfaz
      */
     public Interfaz() {
-        initComponents();
-        this.setLocationRelativeTo(null);
+
         this.setUndecorated(true);
         this.setResizable(false);
-        
+        initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     /**
@@ -48,14 +55,14 @@ public class Interfaz extends javax.swing.JFrame {
         LabelErrorPromedioEstudiante = new javax.swing.JLabel();
         LabelErrorSemestre = new javax.swing.JLabel();
         BotonIngresarEstudiante = new javax.swing.JButton();
-        ComboProfesor = new javax.swing.JComboBox<>();
+        ComboProfesorEnEstudiante = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        ComboMaterias = new javax.swing.JComboBox<>();
+        ComboMateriasEnProfesor = new javax.swing.JComboBox<>();
         txtCedulaProfesor = new javax.swing.JTextField();
         txtNombreProfesor = new javax.swing.JTextField();
         txtNumeroEstudiantes = new javax.swing.JTextField();
@@ -68,6 +75,9 @@ public class Interfaz extends javax.swing.JFrame {
         txtNombreMateria = new javax.swing.JTextField();
         LabelErrorNombreMateria = new javax.swing.JLabel();
         BotonIngresarMaterias = new javax.swing.JButton();
+        ComboProfesoresEnMaterias = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -125,8 +135,7 @@ public class Interfaz extends javax.swing.JFrame {
         BotonIngresarEstudiante.setBorder(null);
         jPanel1.add(BotonIngresarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 115, 20));
 
-        ComboProfesor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(ComboProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 200, -1));
+        jPanel1.add(ComboProfesorEnEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 200, 20));
 
         jLabel11.setText("Profesor ");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 60, 20));
@@ -149,13 +158,12 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel8.setText("Materias");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 106, 98, -1));
 
-        ComboMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ComboMaterias.addActionListener(new java.awt.event.ActionListener() {
+        ComboMateriasEnProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboMateriasActionPerformed(evt);
+                ComboMateriasEnProfesorActionPerformed(evt);
             }
         });
-        jPanel2.add(ComboMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 103, 170, -1));
+        jPanel2.add(ComboMateriasEnProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 103, 170, -1));
 
         txtCedulaProfesor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel2.add(txtCedulaProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 20, 170, 20));
@@ -179,25 +187,78 @@ public class Interfaz extends javax.swing.JFrame {
         BotonIngresarProfesor.setForeground(new java.awt.Color(255, 255, 255));
         BotonIngresarProfesor.setText("Ingresar");
         BotonIngresarProfesor.setBorder(null);
+        BotonIngresarProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonIngresarProfesorActionPerformed(evt);
+            }
+        });
         jPanel2.add(BotonIngresarProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 110, 20));
 
         jTabbedPane1.addTab("Profesor", jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setText("NombreMateria");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 13, 100, -1));
-        jPanel3.add(txtNombreMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 10, 178, -1));
 
         LabelErrorNombreMateria.setText("*");
-        jPanel3.add(LabelErrorNombreMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 13, 120, -1));
 
         BotonIngresarMaterias.setBackground(new java.awt.Color(204, 204, 204));
         BotonIngresarMaterias.setForeground(new java.awt.Color(255, 255, 255));
         BotonIngresarMaterias.setText("Ingresar");
         BotonIngresarMaterias.setBorder(null);
-        jPanel3.add(BotonIngresarMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 100, 20));
+        BotonIngresarMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonIngresarMateriasActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Profesor ");
+
+        jLabel13.setText("*");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(BotonIngresarMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(4, 4, 4)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombreMateria)
+                            .addComponent(ComboProfesoresEnMaterias, 0, 178, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelErrorNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(133, 133, 133))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(LabelErrorNombreMateria))))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboProfesoresEnMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(80, 80, 80)
+                .addComponent(BotonIngresarMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jTabbedPane1.addTab("Materias", jPanel3);
 
@@ -228,19 +289,37 @@ public class Interfaz extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void ComboMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMateriasActionPerformed
+    private void ComboMateriasEnProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMateriasEnProfesorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboMateriasActionPerformed
+    }//GEN-LAST:event_ComboMateriasEnProfesorActionPerformed
+
+    private void BotonIngresarMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarMateriasActionPerformed
+        if (txtNombreMateria.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor ingrese el nombre de la materia");
+        } else {
+            String NombreMateria = txtNombreMateria.getText();
+
+            aux++;
+        }
+    }//GEN-LAST:event_BotonIngresarMateriasActionPerformed
+
+    private void BotonIngresarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarProfesorActionPerformed
+
+        int Cedula = Integer.parseInt(txtCedulaProfesor.getText());
+        String Nombre = txtNombreProfesor.getText();
+        int NumeroEstudiantes = Integer.parseInt(txtNumeroEstudiantes.getText());
+        Profesor x = new Profesor(Cedula, aux, Nombre);
+        Materias M = new Materias(txtNombreMateria.getText(),x);
+        ListaProfesores.add(x);
+        ComboProfesoresEnMaterias.addItem(ListaProfesores.get(Aux).getnombre());
+        Aux++;
+
+    }//GEN-LAST:event_BotonIngresarProfesorActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
@@ -262,8 +341,6 @@ public class Interfaz extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ArrayList<Profesor> ListaProfesor = new ArrayList <Profesor>();
-                ListaProfesor.add(Integer.parseInt(txtCedulaEstudiante.getText()));
                 new Interfaz().setVisible(true);
             }
         });
@@ -273,8 +350,9 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton BotonIngresarEstudiante;
     private javax.swing.JButton BotonIngresarMaterias;
     private javax.swing.JButton BotonIngresarProfesor;
-    private javax.swing.JComboBox<String> ComboMaterias;
-    private javax.swing.JComboBox<String> ComboProfesor;
+    private javax.swing.JComboBox<String> ComboMateriasEnProfesor;
+    private javax.swing.JComboBox<String> ComboProfesorEnEstudiante;
+    private javax.swing.JComboBox<String> ComboProfesoresEnMaterias;
     private javax.swing.JLabel LabeErrorCedulaEstuadinte;
     private javax.swing.JLabel LabelErrorNombre;
     private javax.swing.JLabel LabelErrorNombreMateria;
@@ -286,6 +364,8 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

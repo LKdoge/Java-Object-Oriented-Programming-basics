@@ -11,7 +11,7 @@ public class persona {
 
     private int cedula;
     private String nombre;
-
+    
     public int getcedula() {
         return cedula;
     }
