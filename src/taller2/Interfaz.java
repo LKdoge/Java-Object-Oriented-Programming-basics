@@ -57,6 +57,9 @@ public class Interfaz extends javax.swing.JFrame {
         BotonIngresarEstudiante = new javax.swing.JButton();
         ComboProfesorEnEstudiante = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Lista = new javax.swing.JList<>();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -139,6 +142,23 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel11.setText("Profesor ");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 60, 20));
+
+        Lista.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "item 1", "item 2" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(Lista);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 180, 110));
+
+        jButton2.setText("Agregar Profesor");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 120, -1));
 
         jTabbedPane1.addTab("Estudiante", jPanel1);
 
@@ -298,7 +318,6 @@ public class Interfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor ingrese el nombre de la materia");
         } else {
             String NombreMateria = txtNombreMateria.getText();
-
             aux++;
         }
     }//GEN-LAST:event_BotonIngresarMateriasActionPerformed
@@ -312,9 +331,16 @@ public class Interfaz extends javax.swing.JFrame {
         Materias M = new Materias(txtNombreMateria.getText(),x);
         ListaProfesores.add(x);
         ComboProfesoresEnMaterias.addItem(ListaProfesores.get(Aux).getnombre());
+        ComboProfesorEnEstudiante.addItem(ListaProfesores.get(Aux).getnombre());
         Aux++;
 
     }//GEN-LAST:event_BotonIngresarProfesorActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,7 +386,9 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel LabelErrorNumeroEstudiantes;
     private javax.swing.JLabel LabelErrorPromedioEstudiante;
     private javax.swing.JLabel LabelErrorSemestre;
+    private javax.swing.JList<String> Lista;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -379,6 +407,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField txtCedulaEstudiante;
     private javax.swing.JTextField txtCedulaProfesor;
