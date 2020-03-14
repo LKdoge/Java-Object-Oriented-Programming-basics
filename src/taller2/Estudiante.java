@@ -11,7 +11,7 @@ package taller2;
  *
  * @author Acer
  */
-public class Estudiante extends Persona {
+public class Estudiante extends persona {
     private float Promedio;
     private int Semestre;
 
@@ -28,5 +28,7 @@ public class Estudiante extends Persona {
     public int getSemestre() {
         return Semestre;
     }
+    public Estudiante (){
     
+    }
 }

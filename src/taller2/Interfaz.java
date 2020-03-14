@@ -19,6 +19,9 @@ public class Interfaz extends javax.swing.JFrame {
     public Interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setUndecorated(true);
+        this.setResizable(false);
+        
     }
 
     /**
@@ -118,7 +121,6 @@ public class Interfaz extends javax.swing.JFrame {
         BotonIngresarEstudiante.setForeground(new java.awt.Color(255, 255, 255));
         BotonIngresarEstudiante.setText("Ingresar");
         BotonIngresarEstudiante.setBorder(null);
-        BotonIngresarEstudiante.setPreferredSize(new java.awt.Dimension(39, 13));
         jPanel1.add(BotonIngresarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 115, 20));
 
         jTabbedPane1.addTab("Estudiante", jPanel1);
@@ -140,6 +142,11 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 106, 98, -1));
 
         ComboMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboMateriasActionPerformed(evt);
+            }
+        });
         jPanel2.add(ComboMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 103, 170, -1));
 
         txtCedulaProfesor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -212,6 +219,10 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ComboMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMateriasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboMateriasActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package taller2;
 
 import java.util.ArrayList;
@@ -11,13 +7,22 @@ import java.util.ArrayList;
  *
  * @author Acer
  */
-public class Profesor extends Persona {
-
+public class Profesor extends persona {
+    private int numeromaterias;
     private ArrayList<Estudiante> ListaEstudiantes = new ArrayList<Estudiante>();
     private ArrayList<Materias> ListaMaterias = new ArrayList<Materias>();
-
-    public Profesor(int Cedula, String Nombre) {
+     Estudiante pos = new Estudiante();
+    public Profesor(int numeromaterias,int Cedula, String Nombre) {
         super(Cedula, Nombre);
+        this.numeromaterias = numeromaterias;
+    }
+
+    public int getnumeromaterias() {
+        return numeromaterias;
+    }
+
+    public void setnumeromaterias(int numeromaterias) {
+        this.numeromaterias = numeromaterias;
     }
 
     public ArrayList<Estudiante> getListaEstudiantes() {
@@ -29,12 +34,25 @@ public class Profesor extends Persona {
     }
 
     public Estudiante ObtenerEstudianteMejorPromedio() {
-
-        return 0;
+    float comp = 0;
+        for (int x = 0; x < ListaEstudiantes.size(); x++) {
+            if (ListaEstudiantes.get(x).getPromedio() > comp) {
+                comp = ListaEstudiantes.get(x).getPromedio();
+                pos = ListaEstudiantes.get(x);
+            }
+        }
+        return pos;
     }
 
     public Profesor ObtenerProfesorMasMaterias(ArrayList<Profesor> Materias) {
-
-        return 0;
+    Profesor jo = new Profesor(0,1001226090,"luis");
+        int mat = 0;
+        for(int x = 0 ; x < Materias.size(); x++){
+            if(Materias.get(x).getnumeromaterias() > mat){
+                mat = Materias.get(x).getnumeromaterias();
+                jo = Materias.get(x);
+            }
+        }
+        return jo;
     }
 }
