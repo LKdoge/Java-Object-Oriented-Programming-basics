@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Acer
+ * @author we are gods like this
  */
 public class Profesor extends persona {
     private int numeromaterias;
