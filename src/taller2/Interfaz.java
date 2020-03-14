@@ -48,6 +48,8 @@ public class Interfaz extends javax.swing.JFrame {
         LabelErrorPromedioEstudiante = new javax.swing.JLabel();
         LabelErrorSemestre = new javax.swing.JLabel();
         BotonIngresarEstudiante = new javax.swing.JButton();
+        ComboProfesor = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -121,7 +123,13 @@ public class Interfaz extends javax.swing.JFrame {
         BotonIngresarEstudiante.setForeground(new java.awt.Color(255, 255, 255));
         BotonIngresarEstudiante.setText("Ingresar");
         BotonIngresarEstudiante.setBorder(null);
-        jPanel1.add(BotonIngresarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 115, 20));
+        jPanel1.add(BotonIngresarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 115, 20));
+
+        ComboProfesor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(ComboProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 200, -1));
+
+        jLabel11.setText("Profesor ");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 60, 20));
 
         jTabbedPane1.addTab("Estudiante", jPanel1);
 
@@ -193,7 +201,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Materias", jPanel3);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 101, 600, 210));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 101, 600, 240));
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -266,6 +274,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton BotonIngresarMaterias;
     private javax.swing.JButton BotonIngresarProfesor;
     private javax.swing.JComboBox<String> ComboMaterias;
+    private javax.swing.JComboBox<String> ComboProfesor;
     private javax.swing.JLabel LabeErrorCedulaEstuadinte;
     private javax.swing.JLabel LabelErrorNombre;
     private javax.swing.JLabel LabelErrorNombreMateria;
@@ -276,6 +285,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
