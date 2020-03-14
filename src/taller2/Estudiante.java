@@ -14,19 +14,35 @@ package taller2;
 public class Estudiante extends persona {
     private float Promedio;
     private int Semestre;
-
-    public Estudiante(float Promedio, int Semestre, int Cedula, String Nombre) {
+    private String profesor;
+    public Estudiante(float Promedio, int Semestre, int Cedula, String Nombre, 
+            String profesor) {
         super(Cedula, Nombre);
         this.Promedio = Promedio;
         this.Semestre = Semestre;
+        this.profesor = profesor;
     }
 
     public float getPromedio() {
         return Promedio;
     }
+    public void setPromedio(float promedio){
+        this.Promedio = promedio;
+    }
+
+    public void setSemestre(int Semestre) {
+        this.Semestre = Semestre;
+    }
+
+    public void setProfesor(String profesor) {
+        this.profesor = profesor;
+    }
 
     public int getSemestre() {
         return Semestre;
+    }
+    public String getprofesor(){
+        return profesor;
     }
     public Estudiante (){
     
