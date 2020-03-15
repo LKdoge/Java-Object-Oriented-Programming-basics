@@ -10,9 +10,7 @@ import java.util.ArrayList;
 public class Profesor extends persona {
     private int numeromaterias;
     private ArrayList<Estudiante> ListaEstudiantes = new ArrayList<Estudiante>();
-    private ArrayList<Materias> ListaMaterias = new ArrayList<Materias>();
-     Estudiante pos = new Estudiante();
-     
+    Estudiante pos = new Estudiante();
     public Profesor(){
         
     } 
